@@ -1,0 +1,166 @@
+"use client";
+
+import React, { useState } from "react";
+
+const SidebarEnquiryForm = () => {
+
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    if (name === "phone") {
+      if (!/^\d*$/.test(value)) return;
+      if (value.length > 10) return;
+    }
+
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (formData.phone.length !== 10) {
+      alert("Please enter valid 10 digit number");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const res = await fetch("/api/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          source: "Affordable Apartments Gurgaon",
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert("Your enquiry has been submitted!");
+        setFormData({ name: "", phone: "", message: "" });
+      } else {
+        alert("Something went wrong!");
+      }
+
+    } catch (error) {
+      alert("Server error!");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+
+    <div
+      className="sticky top-28 
+      bg-white 
+      rounded-3xl 
+      shadow-[0_20px_60px_rgba(158,28,96,0.15)]
+      p-8 border border-[#9E1C60]/10"
+    >
+
+      {/* HEADING */}
+
+      <h3 className="text-2xl font-semibold 
+      bg-gradient-to-r from-[#ff4da6] to-[#9E1C60]
+      bg-clip-text text-transparent mb-2">
+
+        Get Free Consultation
+
+      </h3>
+
+      <p className="text-sm text-gray-600 mb-6 leading-relaxed">
+
+        Looking for affordable apartments in Gurgaon? Share your requirements and our
+        property expert will connect you with the best options in prime locations.
+
+      </p>
+
+      <form onSubmit={handleSubmit} className="space-y-5">
+
+        {/* NAME */}
+
+        <input
+          name="name"
+          required
+          placeholder="Full Name"
+          value={formData.name}
+          onChange={handleChange}
+          className="w-full px-4 py-3 rounded-xl 
+          border border-gray-300
+          text-gray-900 placeholder-gray-500
+          focus:ring-2 focus:ring-[#9E1C60] focus:border-[#9E1C60]
+          outline-none transition"
+        />
+
+        {/* PHONE */}
+
+        <input
+          name="phone"
+          required
+          placeholder="Phone Number"
+          value={formData.phone}
+          onChange={handleChange}
+          className="w-full px-4 py-3 rounded-xl 
+          border border-gray-300
+          text-gray-900 placeholder-gray-500
+          focus:ring-2 focus:ring-[#9E1C60] focus:border-[#9E1C60]
+          outline-none transition"
+        />
+
+        {/* MESSAGE */}
+
+        <textarea
+          name="message"
+          rows="4"
+          placeholder="Budget / Location / BHK"
+          value={formData.message}
+          onChange={handleChange}
+          className="w-full px-4 py-3 rounded-xl 
+          border border-gray-300
+          text-gray-900 placeholder-gray-500
+          focus:ring-2 focus:ring-[#9E1C60] focus:border-[#9E1C60]
+          outline-none resize-none transition"
+        />
+
+        {/* BUTTON */}
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full
+          bg-gradient-to-r from-[#9E1C60] to-[#ff4da6]
+          text-white py-3
+          font-semibold
+          rounded-xl
+          hover:opacity-90
+          transition 
+          shadow-md hover:shadow-lg
+          disabled:opacity-60 cursor-pointer"
+        >
+
+          {loading ? "Submitting..." : "Get Free Consultation"}
+
+        </button>
+
+      </form>
+
+    </div>
+
+  );
+
+};
+
+export default SidebarEnquiryForm;
