@@ -66,10 +66,10 @@ const HeroSection = () => {
   return (
     <section
       className="relative bg-cover bg-center px-4 sm:px-6"
-      style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c')",
-      }}
+      // style={{
+      //   backgroundImage:
+      //     "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c')",
+      // }}
     >
       {/* 🔥 PREMIUM WINE THEME OVERLAY */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#9E1C60]/80 via-[#9E1C60]/60 to-black/80"></div>
