@@ -80,6 +80,7 @@ const relatedProperties = useMemo(() => {
             {propertyy?.media?.url ? (
               <Image
                 src={propertyy.media.url}
+                unoptimized
                 alt={propertyy?.title}
                 fill
                 priority
