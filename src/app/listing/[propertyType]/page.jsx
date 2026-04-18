@@ -96,7 +96,7 @@ const bhk = propertyType?.split("-")[0];
         <h1 className="text-3xl md:text-5xl font-bold text-gray-900">
           {bhk} BHK{" "}
           <span className="bg-gradient-to-r from-[#ff4da6] to-[#9E1C60] bg-clip-text text-transparent">
-            Apartments
+           Affordable Apartments
           </span>{" "}
           in Gurgaon
         </h1>
