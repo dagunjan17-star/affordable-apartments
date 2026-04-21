@@ -4,7 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useBlog } from "@/contextapi/BlogContext";
 import "@/app/globals.css";
-
+import Breadcrumb from "@/components/Breadcrumb";
 export default function BlogDetails({ post }) {
 
   const single = post?.blog;
@@ -13,12 +13,26 @@ export default function BlogDetails({ post }) {
   return (
     <div className="max-w-6xl mx-auto gap-10 px-4 py-12
     bg-gradient-to-b from-white via-[#fff1f6] to-[#fdf2f8]">
-
+<div className="mb-6">
+   <Breadcrumb />
+  </div>
       {/* LEFT SIDE */}
       <article className="space-y-12">
 
+            {/* TITLE + DATE */}
+            <div className="mt-6 px-2 md:px-0">
+
+              <h1 className="text-2xl md:text-4xl font-bold text-gray-900 leading-tight">
+                {single?.Title}
+              </h1>
+
+              <p className="text-sm text-gray-500 mt-2">
+                {new Date(single?.Date).toDateString()}
+              </p>
+
+            </div>
         {/* HERO */}
-        <div className="w-full flex justify-center pt-6">
+        <div className="w-full flex justify-center pt-2">
           <div className="w-full">
 
             {/* IMAGE */}
@@ -35,18 +49,6 @@ export default function BlogDetails({ post }) {
               />
             </div>
 
-            {/* TITLE + DATE */}
-            <div className="mt-6 px-2 md:px-0">
-
-              <h1 className="text-2xl md:text-4xl font-bold text-gray-900 leading-tight">
-                {single?.Title}
-              </h1>
-
-              <p className="text-sm text-gray-500 mt-2">
-                {new Date(single?.Date).toDateString()}
-              </p>
-
-            </div>
 
           </div>
         </div>

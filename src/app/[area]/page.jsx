@@ -1,6 +1,6 @@
 import FilterProperties from "./FilterProperties";
 import SidebarEnquiryForm from "@/components/SidebarEnquiryForm";
-
+import Breadcrumb from "@/components/Breadcrumb";
 export default async function Page({ params }) {
 
   const resolvedParams = await params;
@@ -20,9 +20,11 @@ const formattedArea = area
   return (
 
     <div className="bg-gradient-to-b from-white via-[#fff1f6] to-[#fdf2f8] min-h-screen">
-
       <div className="max-w-7xl mx-auto px-4 py-12">
 
+<div className="mb-6">
+   <Breadcrumb />
+  </div>
         {/* HEADING */}
 
         <div className="mb-16">

@@ -238,6 +238,17 @@ export default function Properties() {
 
                     <Link
                       href={`/properties/${property.slug}`}
+  onClick={() => {
+    localStorage.setItem("lastLocation", property.city);
+
+    // 🔥 ONLY set if coming from listing page
+    if (window.location.pathname.includes("flat") || window.location.pathname.includes("listing")) {
+      localStorage.setItem("lastListing", window.location.pathname);
+    } else {
+      // 🔥 clear if coming from home or anywhere else
+      localStorage.removeItem("lastListing");
+    }
+  }}
                       className="flex-1 border border-[#9E1C60]
                       text-[#9E1C60]
                       px-4 py-2.5

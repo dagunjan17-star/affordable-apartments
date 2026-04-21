@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState,useMemo, useEffect } from "react";
 import { useProperty } from "@/contextapi/propertycontext";
 import PropertyCard from "@/components/PropertyCard";
+import Breadcrumb from "@/components/Breadcrumb";
 export default function PropertyDetails({ propertyy }) {
 
   const [open, setOpen] = useState(false);
@@ -68,7 +69,9 @@ const relatedProperties = useMemo(() => {
     <div className="bg-gradient-to-b from-white via-[#fff1f6] to-[#fdf2f8] text-gray-900 px-4 sm:px-6 py-12">
 
       <div className="max-w-7xl mx-auto">
-
+<div className="mb-6">
+   <Breadcrumb property={propertyy}/>
+  </div>
         {/* TOP GRID */}
 
         <div className="grid grid-cols-1 md:grid-cols-[420px_1fr] gap-10 md:gap-14 items-start">
