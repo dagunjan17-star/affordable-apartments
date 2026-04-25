@@ -34,7 +34,7 @@ export default function Footer() {
         <div className="mb-12">
 
           <h3 className="text-xl font-semibold mb-6 text-gray-900">
-            Affordable Apartments Near Gurgaon (Faridabad Locations)
+            Affordable Apartments Near Gurgaon
           </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-4 text-sm">

@@ -80,13 +80,13 @@ export default function Properties() {
 
       <div className="max-w-7xl mx-auto mb-12">
 
-        <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900">
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900">
           Affordable{" "}
           <span className="bg-gradient-to-r from-[#ff4da6] to-[#9E1C60] bg-clip-text text-transparent">
             Apartments
           </span>{" "}
           in Gurgaon
-        </h1>
+        </h2>
 
         <p className="mt-4 text-gray-600 max-w-2xl">
           Explore budget-friendly apartments in Gurgaon with modern layouts,

@@ -42,12 +42,12 @@ export default function BlogList() {
   </div>
       {/* HEADING */}
       <div className="mb-14">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
           Latest Insights on{" "}
           <span className="bg-gradient-to-r from-[#ff4da6] to-[#9E1C60] bg-clip-text text-transparent">
             Gurgaon Land Investment
           </span>
-        </h2>
+        </h1>
 
         <p className="text-gray-600 mt-4 max-w-2xl">
           Explore expert guides, market insights, and investment tips for

@@ -23,5 +23,5 @@ jobs:
       - name: Sync to project repos
         run: |
           git remote remove mirror || true
-          git remote add mirror https://x-access-token:${{ secrets.FARIDABAD_ACESS_TOKEN }}@github.com/dealacresfaridabad/Flat-for-sale.git
+          git remote add mirror https://x-access-token:${{ secrets.GURGAON_ACCESS_TOKEN }}@github.com/dealacresGurgaon/Affordable-Apartments.git
           git push mirror HEAD:main --force

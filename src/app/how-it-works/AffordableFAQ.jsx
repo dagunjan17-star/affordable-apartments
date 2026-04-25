@@ -76,9 +76,9 @@ export default function AffordableFAQ() {
               >
                 {/* Question */}
                 <div className="flex justify-between items-center">
-                  <span className="font-semibold text-[#1a1a1a]">
+                  <h3 className="font-semibold text-[#1a1a1a]">
                     {faq.q}
-                  </span>
+                  </h3>
 
                   <span
                     className={`text-sm text-[#1a1a1a] transition-transform duration-300 ${
