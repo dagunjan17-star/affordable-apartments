@@ -73,13 +73,13 @@ const SidebarEnquiryForm = () => {
 
       {/* HEADING */}
 
-      <h3 className="text-2xl font-semibold 
+      <h2 className="text-2xl font-semibold 
       bg-gradient-to-r from-[#ff4da6] to-[#9E1C60]
       bg-clip-text text-transparent mb-2">
 
         Get Free Consultation
 
-      </h3>
+      </h2>
 
       <p className="text-sm text-gray-600 mb-6 leading-relaxed">
 
