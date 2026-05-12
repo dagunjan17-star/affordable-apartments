@@ -8,7 +8,7 @@ import { notFound } from "next/navigation";
 async function getPropertyBySlug(slug) {
 
   const res = await fetch(
-    `https://deal-acres-backend.onrender.com/api/listed-properties/getPropertyBySlug/${slug}`,
+    `https://gurgaon-backend.onrender.com/api/listed-properties/getPropertyBySlug/${slug}`,
     {
       cache: "no-store",
     }
@@ -20,7 +20,7 @@ async function getPropertyBySlug(slug) {
 
   const json = await res.json();
 
-  return json?.data?.[0] || null;
+  return json?.data || null;
 
 }
 

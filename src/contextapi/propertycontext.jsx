@@ -59,7 +59,7 @@ propertyType: "1 BHK,2 BHK,3 BHK,4 BHK,5 BHK,6 BHK,Studio Apartments"
       }).toString();
 
       const res = await axios.get(
-        `https://deal-acres-backend.onrender.com/api/listed-properties/searchProperties?${query}`
+        `https://gurgaon-backend.onrender.com/api/listed-properties/searchProperties?${query}`
       );
 
       setTotalPages(res?.data?.totalPages || 1);
@@ -76,7 +76,7 @@ propertyType: "1 BHK,2 BHK,3 BHK,4 BHK,5 BHK,6 BHK,Studio Apartments"
   const fetchAllProperties = async () => {
     try {
       const res = await axios.get(
-        "https://deal-acres-backend.onrender.com/api/listed-properties/searchProperties?page=1&limit=100&city=gurgaon"
+        "https://gurgaon-backend.onrender.com/api/listed-properties/searchProperties?page=1&limit=100&city=gurgaon"
       );
 
       setAllProperties(res?.data?.data || []);
@@ -99,7 +99,7 @@ setLocalityData([])
       const query = new URLSearchParams(finalParams).toString();
 
       const res = await axios.get(
-        `https://deal-acres-backend.onrender.com/api/listed-properties/searchByLocality?${query}`
+        `https://gurgaon-backend.onrender.com/api/listed-properties/searchByLocality?${query}`
       );
 
       console.log("LOCALITY DATA:", res.data.data.length);
@@ -130,7 +130,7 @@ setLocalityData([])
     }).toString();
 
     const res = await axios.get(
-      `https://deal-acres-backend.onrender.com/api/listed-properties/searchProperties?${query}`
+      `https://gurgaon-backend.onrender.com/api/listed-properties/searchProperties?${query}`
     );
 
     // ✅ IMPORTANT FIX
