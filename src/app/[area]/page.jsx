@@ -6,7 +6,7 @@ import Listing from "./Listing";
 // import PageContent from "@/components/PageContent";
 
 const DOMAIN = "www.affordableapartmentsingurgaon.com";
-const BASE_URL = "http://localhost:8282";
+const BASE_URL = "https://gurgaon-backend.onrender.com";
 
 // Fallback SEO
 const FALLBACK_META = {
