@@ -88,14 +88,7 @@ const HeroSection = () => {
           </h1>
 
           <p className="text-lg max-w-2xl text-gray-200 leading-relaxed">
-            Explore affordable apartments in Gurgaon designed for modern
-            lifestyles without stretching your budget.
-            <br /><br />
-            Choose from 1BHK, 2BHK & 3BHK flats in prime locations with
-            excellent connectivity to offices, metro, and daily essentials.
-            <br /><br />
-            Verified listings, smart layouts, and best deals — everything you
-            need to find your perfect home.
+           Affordable living in Gurgaon is no longer a contradiction — it's a reality! Discover our handpicked collection of affordable apartments in Gurgaon that deliver genuine value without compromising on quality, connectivity, or comfort. The city's expanding real estate landscape has given rise to excellent budget-friendly apartment options in emerging sectors along Dwarka Expressway, New Gurgaon, Sohna Road, and the Southern Peripheral Road — offering modern amenities, thoughtful design, and RERA-compliant developer trust at prices that won't stretch your finances. Affordable apartments in Gurgaon are ideal for first-time homebuyers stepping onto the property ladder, young professionals seeking independent living near their corporate offices, and nuclear families wanting a quality home within a disciplined budget. Many of these projects come with government incentives, affordable housing scheme benefits, and home loan subsidies under PMAY (Pradhan Mantri Awas Yojana), making ownership even more accessible. Don't let soaring prices in DLF or Golf Course Road discourage you — Gurgaon's budget apartment market is thriving, vibrant, and full of options worth every rupee. Let us help you find your affordable dream apartment in Gurgaon today!
           </p>
 <Link href="/how-it-works">
   <button className="relative overflow-hidden bg-[#9E1C60] text-white px-6 py-3 rounded-xl font-semibold shadow-md transition-all duration-300 hover:bg-[#9E1C60] hover:shadow-xl hover:scale-105 mt-4 cursor-pointer">
