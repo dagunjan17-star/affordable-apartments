@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 const SidebarEnquiryForm = () => {
-
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -12,50 +12,95 @@ const SidebarEnquiryForm = () => {
 
   const [loading, setLoading] = useState(false);
 
+  // INPUT CHANGE
   const handleChange = (e) => {
     const { name, value } = e.target;
 
+    // PHONE VALIDATION
     if (name === "phone") {
+      // only numbers
       if (!/^\d*$/.test(value)) return;
+
+      // max 10 digits
       if (value.length > 10) return;
     }
 
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
+  // SUBMIT FORM
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // PHONE CHECK
     if (formData.phone.length !== 10) {
-      alert("Please enter valid 10 digit number");
+      toast.error(
+        "Phone number must be exactly 10 digits."
+      );
       return;
     }
+
+    // WEBSITE
+    const website =
+      typeof window !== "undefined"
+        ? window.location.hostname.replace(
+            "www.",
+            ""
+          )
+        : "";
 
     try {
       setLoading(true);
 
+      const payload = {
+        ...formData,
+        website,
+        source: "Sidebar Enquiry Form",
+      };
+
+      console.log("PAYLOAD:", payload);
+
       const res = await fetch("/api/submit", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type":
+            "application/json",
         },
-        body: JSON.stringify({
-          ...formData,
-          source: "Affordable Apartments Gurgaon",
-        }),
+        body: JSON.stringify(payload),
       });
+
+      console.log("STATUS:", res.status);
 
       const data = await res.json();
 
-      if (data.success) {
-        alert("Your enquiry has been submitted!");
-        setFormData({ name: "", phone: "", message: "" });
-      } else {
-        alert("Something went wrong!");
-      }
+      console.log("RESPONSE:", data);
 
-    } catch (error) {
-      alert("Server error!");
+      if (data.success) {
+        toast.success(
+          "Request submitted successfully!"
+        );
+
+        // RESET FORM
+        setFormData({
+          name: "",
+          phone: "",
+          message: "",
+        });
+      } else {
+        toast.error(
+          data.error ||
+            "Something went wrong."
+        );
+      }
+    } catch (err) {
+      console.log("ERROR:", err);
+
+      toast.error(
+        "Network error. Please try again."
+      );
     } finally {
       setLoading(false);
     }
