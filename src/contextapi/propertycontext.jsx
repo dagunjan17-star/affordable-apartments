@@ -7,6 +7,8 @@ const PropertyContext = createContext();
 
 export const PropertyProvider = ({ children }) => {
 
+  const [dailyLimit,setDailyLimit]=useState(0);
+
   // ================= MAIN STATE =================
   const [properties, setProperties] = useState([]);
   const [allProperties, setAllProperties] = useState([]);
@@ -183,6 +185,7 @@ error3,
         error2,
         fetchByLocality,
         setLocalityParams,
+        dailyLimit,
       }}
     >
       {children}

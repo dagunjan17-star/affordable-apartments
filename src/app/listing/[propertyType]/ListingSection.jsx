@@ -10,6 +10,8 @@ import SidebarEnquiryForm from "@/components/SidebarEnquiryForm";
 import Pagination from "@/components/Pagination";
 import BHKFilterButtons from "@/components/BHKFilterButtons";
 import Breadcrumb from "@/components/Breadcrumb";
+import ViewDetailsButton from "@/components/ViewDetailsButton";
+
 export default function PropertyTypePage() {
 
   const { propertyType } = useParams();
@@ -218,14 +220,18 @@ const bhk = propertyType?.split("-")[0];
                       Get Price
                     </button>
 
-                    <Link
+                    {/* <Link
                       href={`/properties/${property.slug}`}
                       className="flex-1 border border-[#9E1C60]
                       text-[#9E1C60] px-4 py-2.5 rounded-xl text-sm text-center
                       hover:bg-[#9E1C60] hover:text-white transition"
                     >
                       View Details
-                    </Link>
+                    </Link> */}
+                    <ViewDetailsButton
+                          slug={property.slug}
+                         href={`https://www.dealacres.com/property/${property.slug}`}
+                         />
 
                   </div>
 

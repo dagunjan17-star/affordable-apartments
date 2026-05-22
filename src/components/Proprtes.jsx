@@ -8,6 +8,7 @@ import ContactPopup from "@/components/ContactPopup";
 import SidebarEnquiryForm from "./SidebarEnquiryForm";
 import Pagination from "@/components/Pagination";
 import BHKFilterButtons from "./BHKFilterButtons";
+import ViewDetailsButton from "./ViewDetailsButton";
 
 export default function Properties() {
   const { properties, loading, error, page, setPage, totalPages } = useProperty();
@@ -236,7 +237,7 @@ export default function Properties() {
                       Get Price
                     </button>
 
-                    <Link
+                    {/* <Link
                       href={`/properties/${property.slug}`}
   onClick={() => {
     localStorage.setItem("lastLocation", property.city);
@@ -258,7 +259,12 @@ export default function Properties() {
                       transition text-sm font-medium text-center"
                     >
                       View Details
-                    </Link>
+                    </Link> */}
+
+                    <ViewDetailsButton
+                          slug={property.slug}
+                         href={`https://www.dealacres.com/property/${property.slug}`}
+                         />
 
                   </div>
 
