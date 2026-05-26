@@ -1,16 +1,28 @@
 "use client";
 
 import React, { useState } from "react";
-import toast from "react-hot-toast";
+import AlertPopup from "./AlertPopup";
 
 const SidebarEnquiryForm = () => {
-  const [formData, setFormData] = useState({
+   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     message: "",
   });
+  const [popup, setPopup] = useState({
+  open: false,
+  type: "success",
+  message: "",
+});
 
   const [loading, setLoading] = useState(false);
+
+  // ALERT POPUP STATE
+  const [popup, setPopup] = useState({
+    open: false,
+    type: "success",
+    message: "",
+  });
 
   // INPUT CHANGE
   const handleChange = (e) => {
@@ -31,15 +43,28 @@ const SidebarEnquiryForm = () => {
     }));
   };
 
+  // CLOSE ALERT POPUP
+  const closePopup = () => {
+    setPopup({
+      open: false,
+      type: "success",
+      message: "",
+    });
+  };
+
   // SUBMIT FORM
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // PHONE CHECK
     if (formData.phone.length !== 10) {
-      toast.error(
-        "Phone number must be exactly 10 digits."
-      );
+      setPopup({
+        open: true,
+        type: "error",
+        message:
+          "Phone number must be exactly 10 digits.",
+      });
+
       return;
     }
 
@@ -79,9 +104,12 @@ const SidebarEnquiryForm = () => {
       console.log("RESPONSE:", data);
 
       if (data.success) {
-        toast.success(
-          "Request submitted successfully!"
-        );
+        setPopup({
+          open: true,
+          type: "success",
+          message:
+            "Request submitted successfully!",
+        });
 
         // RESET FORM
         setFormData({
@@ -90,17 +118,23 @@ const SidebarEnquiryForm = () => {
           message: "",
         });
       } else {
-        toast.error(
-          data.error ||
-            "Something went wrong."
-        );
+        setPopup({
+          open: true,
+          type: "error",
+          message:
+            data.error ||
+            "Something went wrong.",
+        });
       }
     } catch (err) {
       console.log("ERROR:", err);
 
-      toast.error(
-        "Network error. Please try again."
-      );
+      setPopup({
+        open: true,
+        type: "error",
+        message:
+          "Network error. Please try again.",
+      });
     } finally {
       setLoading(false);
     }
@@ -108,101 +142,113 @@ const SidebarEnquiryForm = () => {
 
   return (
 
-    <div
-      className="sticky top-28 
-      bg-white 
-      rounded-3xl 
-      shadow-[0_20px_60px_rgba(158,28,96,0.15)]
-      p-8 border border-[#9E1C60]/10"
-    >
+    <>
+      <div
+        className="sticky top-28 
+        bg-white 
+        rounded-3xl 
+        shadow-[0_20px_60px_rgba(158,28,96,0.15)]
+        p-8 border border-[#9E1C60]/10"
+      >
 
-      {/* HEADING */}
+        {/* HEADING */}
 
-      <h2 className="text-2xl font-semibold 
-      bg-gradient-to-r from-[#ff4da6] to-[#9E1C60]
-      bg-clip-text text-transparent mb-2">
+        <h2 className="text-2xl font-semibold 
+        bg-gradient-to-r from-[#ff4da6] to-[#9E1C60]
+        bg-clip-text text-transparent mb-2">
 
-        Get Free Consultation
+          Get Free Consultation
 
-      </h2>
+        </h2>
 
-      <p className="text-sm text-gray-600 mb-6 leading-relaxed">
+        <p className="text-sm text-gray-600 mb-6 leading-relaxed">
 
-        Looking for affordable apartments in Gurgaon? Share your requirements and our
-        property expert will connect you with the best options in prime locations.
+          Looking for affordable apartments in Gurgaon? Share your requirements and our
+          property expert will connect you with the best options in prime locations.
 
-      </p>
+        </p>
 
-      <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-5">
 
-        {/* NAME */}
+          {/* NAME */}
 
-        <input
-          name="name"
-          required
-          placeholder="Full Name"
-          value={formData.name}
-          onChange={handleChange}
-          className="w-full px-4 py-3 rounded-xl 
-          border border-gray-300
-          text-gray-900 placeholder-gray-500
-          focus:ring-2 focus:ring-[#9E1C60] focus:border-[#9E1C60]
-          outline-none transition"
-        />
+          <input
+            name="name"
+            required
+            placeholder="Full Name"
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full px-4 py-3 rounded-xl 
+            border border-gray-300
+            text-gray-900 placeholder-gray-500
+            focus:ring-2 focus:ring-[#9E1C60] focus:border-[#9E1C60]
+            outline-none transition"
+          />
 
-        {/* PHONE */}
+          {/* PHONE */}
 
-        <input
-          name="phone"
-          required
-          placeholder="Phone Number"
-          value={formData.phone}
-          onChange={handleChange}
-          className="w-full px-4 py-3 rounded-xl 
-          border border-gray-300
-          text-gray-900 placeholder-gray-500
-          focus:ring-2 focus:ring-[#9E1C60] focus:border-[#9E1C60]
-          outline-none transition"
-        />
+          <input
+            name="phone"
+            required
+            placeholder="Phone Number"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full px-4 py-3 rounded-xl 
+            border border-gray-300
+            text-gray-900 placeholder-gray-500
+            focus:ring-2 focus:ring-[#9E1C60] focus:border-[#9E1C60]
+            outline-none transition"
+          />
 
-        {/* MESSAGE */}
+          {/* MESSAGE */}
 
-        <textarea
-          name="message"
-          rows="4"
-          placeholder="Budget / Location / BHK"
-          value={formData.message}
-          onChange={handleChange}
-          className="w-full px-4 py-3 rounded-xl 
-          border border-gray-300
-          text-gray-900 placeholder-gray-500
-          focus:ring-2 focus:ring-[#9E1C60] focus:border-[#9E1C60]
-          outline-none resize-none transition"
-        />
+          <textarea
+            name="message"
+            rows="4"
+            placeholder="Budget / Location / BHK"
+            value={formData.message}
+            onChange={handleChange}
+            className="w-full px-4 py-3 rounded-xl 
+            border border-gray-300
+            text-gray-900 placeholder-gray-500
+            focus:ring-2 focus:ring-[#9E1C60] focus:border-[#9E1C60]
+            outline-none resize-none transition"
+          />
 
-        {/* BUTTON */}
+          {/* BUTTON */}
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full
-          bg-gradient-to-r from-[#9E1C60] to-[#ff4da6]
-          text-white py-3
-          font-semibold
-          rounded-xl
-          hover:opacity-90
-          transition 
-          shadow-md hover:shadow-lg
-          disabled:opacity-60 cursor-pointer"
-        >
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full
+            bg-gradient-to-r from-[#9E1C60] to-[#ff4da6]
+            text-white py-3
+            font-semibold
+            rounded-xl
+            hover:opacity-90
+            transition 
+            shadow-md hover:shadow-lg
+            disabled:opacity-60 cursor-pointer"
+          >
 
-          {loading ? "Submitting..." : "Get Free Consultation"}
+            {loading ? "Submitting..." : "Get Free Consultation"}
 
-        </button>
+          </button>
 
-      </form>
+        </form>
 
-    </div>
+      </div>
+
+      {/* ALERT POPUP */}
+
+      <AlertPopup
+        open={popup.open}
+        type={popup.type}
+        message={popup.message}
+        onClose={closePopup}
+      />
+
+    </>
 
   );
 

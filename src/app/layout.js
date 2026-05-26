@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           {children}
           <ScrollToTop />
-          <Toaster position="top-right" reverseOrder={false} />
+          {/* <Toaster position="top-right" reverseOrder={false} /> */}
           <Footer/>
           </BlogProvider>
         </PropertyProvider>
