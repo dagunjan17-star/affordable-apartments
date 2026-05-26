@@ -21,12 +21,7 @@ export default function ContactPopup({
 
   const [loading, setLoading] = useState(false);
 
-  // ALERT POPUP STATE
-  const [popup, setPopup] = useState({
-    open: false,
-    type: "success",
-    message: "",
-  });
+ 
 
   // CLOSE POPUP
   if (!isOpen) return null;

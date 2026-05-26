@@ -9,7 +9,7 @@ import SidebarEnquiryForm from "./SidebarEnquiryForm";
 import Pagination from "@/components/Pagination";
 import BHKFilterButtons from "./BHKFilterButtons";
 import ViewDetailsButton from "./ViewDetailsButton";
-
+import NearbyLocations from "./NearbyLocations";
 export default function Properties() {
   const { properties, loading, error, page, setPage, totalPages } = useProperty();
 
@@ -107,174 +107,170 @@ export default function Properties() {
 
         <div className="lg:col-span-2 space-y-8">
 
-          {currentProperties.map((property) => (
+          {/* ================= PROPERTY LOOP ================= */}
 
-            <div
-              key={property._id}
-              className="bg-white rounded-3xl border border-gray-100
-              shadow-[0_15px_40px_rgba(0,0,0,0.08)]
-              hover:-translate-y-2 
-              hover:shadow-[0_25px_70px_rgba(158,28,96,0.25)]
-              transition duration-300 overflow-hidden md:h-[270px]"
+{currentProperties.map((property, index) => (
+  <div key={property._id}>
+
+    {/* ================= PROPERTY CARD ================= */}
+
+    <div
+      className="
+        bg-white rounded-3xl border border-gray-100
+        shadow-[0_15px_40px_rgba(0,0,0,0.08)]
+        hover:-translate-y-2 
+        hover:shadow-[0_25px_70px_rgba(158,28,96,0.25)]
+        transition duration-300 overflow-hidden md:h-[270px]
+      "
+    >
+
+      <div className="flex flex-col md:flex-row h-full">
+
+        {/* IMAGE */}
+
+        <div className="relative md:w-[35%]">
+
+          <Image
+            src={property?.media?.url || "/no-image.png"}
+            unoptimized
+            alt={property.title}
+            width={600}
+            height={400}
+            className="w-full h-56 md:h-full object-cover"
+          />
+
+          {/* BADGE */}
+
+          <span
+            onClick={() => {
+              setSelectedProperty(property.title);
+              setOpen(true);
+            }}
+            className="
+              absolute top-3 left-3
+              bg-gradient-to-r from-[#9E1C60] to-[#ff4da6]
+              text-white text-xs px-4 py-1.5
+              rounded-full shadow-md
+              font-semibold cursor-pointer
+            "
+          >
+            {property.propertyType || "Apartment"}
+          </span>
+
+        </div>
+
+        {/* DETAILS */}
+
+        <div className="p-6 flex-1 flex flex-col">
+
+          <h2 className="text-xl font-semibold text-gray-900">
+            {property.title}
+          </h2>
+
+          <p className="text-sm text-gray-500 mt-1 flex items-center gap-1">
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-4 h-4 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
             >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243A8 8 0 1117.657 16.657z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+            </svg>
 
-              <div className="flex flex-col md:flex-row h-full">
+            {property.locality}
 
-                {/* IMAGE */}
+          </p>
 
-                <div className="relative md:w-[35%]">
+          {/* INFO BAR */}
 
-                  <Image
-                    src={property?.media?.url || "/no-image.png"}
-                    unoptimized
-                    alt={property.title}
-                    width={600}
-                    height={400}
-                    className="w-full h-56 md:h-full object-cover"
-                  />
+          <div
+            className="
+              mt-4 bg-[#fff1f6]
+              border border-[#9E1C60]/20
+              rounded-xl px-4 py-3
+              flex items-center justify-between text-sm
+            "
+          >
 
-                  {/* BADGE */}
+            <div className="flex flex-col items-center flex-1">
+              <span className="text-gray-500 text-xs">STATUS</span>
 
-                  <span
-                    onClick={() => {
-                      setSelectedProperty(property.title);
-                      setOpen(true);
-                    }}
-                    className="absolute top-3 left-3
-                    bg-gradient-to-r from-[#9E1C60] to-[#ff4da6]
-                    text-white text-xs px-4 py-1.5
-                    rounded-full shadow-md
-                    font-semibold cursor-pointer"
-                  >
-                    {property.propertyType || "Apartment"}
-                  </span>
-
-                </div>
-
-
-                {/* DETAILS */}
-
-                <div className="p-6 flex-1 flex flex-col">
-
-                  <h2 className="text-xl font-semibold text-gray-900">
-                    {property.title}
-                  </h2>
-
-                  <p className="text-sm text-gray-500 mt-1 flex items-center gap-1">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="w-4 h-4 text-gray-400"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={2}
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243A8 8 0 1117.657 16.657z"
-    />
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-    />
-  </svg>
-
-  {property.locality}
-</p>
-
-
-                  {/* INFO BAR */}
-
-                  <div className="mt-4 bg-[#fff1f6] border border-[#9E1C60]/20 rounded-xl px-4 py-3 flex items-center justify-between text-sm">
-
-                    <div className="flex flex-col items-center flex-1">
-                      <span className="text-gray-500 text-xs">STATUS</span>
-                      <span className="font-semibold text-[#9E1C60]">
-                        {property.status || "Available"}
-                      </span>
-                    </div>
-
-                    <div className="h-8 w-px bg-[#9E1C60]/20"></div>
-
-                    <div className="flex flex-col items-center flex-1">
-                      <span className="text-gray-500 text-xs">TYPE</span>
-                      <span className="font-semibold text-gray-900">
-                        {property.propertyCategory || "Apartment"}
-                      </span>
-                    </div>
-
-                  </div>
-
-
-                  {/* <p className="text-sm text-gray-600 mt-4 line-clamp-2 leading-relaxed">
-                    {property.description ||
-                      "Affordable apartment with modern design and prime Gurgaon location."}
-                  </p> */}
-
-
-                  <div className="flex-1"></div>
-
-
-                  {/* BUTTONS */}
-
-                  <div className="flex gap-3 mt-6">
-
-                    <button
-                      onClick={() => {
-                        setSelectedProperty(property.title);
-                        setOpen(true);
-                      }}
-                      className="flex-1 
-                      bg-gradient-to-r from-[#9E1C60] to-[#ff4da6]
-                      text-white px-4 py-2.5
-                      rounded-xl
-                      transition
-                      text-sm font-medium
-                      shadow-md hover:shadow-lg cursor-pointer"
-                    >
-                      Get Price
-                    </button>
-
-                    {/* <Link
-                      href={`/properties/${property.slug}`}
-  onClick={() => {
-    localStorage.setItem("lastLocation", property.city);
-
-    // 🔥 ONLY set if coming from listing page
-    if (window.location.pathname.includes("flat") || window.location.pathname.includes("listing")) {
-      localStorage.setItem("lastListing", window.location.pathname);
-    } else {
-      // 🔥 clear if coming from home or anywhere else
-      localStorage.removeItem("lastListing");
-    }
-  }}
-                      className="flex-1 border border-[#9E1C60]
-                      text-[#9E1C60]
-                      px-4 py-2.5
-                      rounded-xl
-                      hover:bg-[#9E1C60]
-                      hover:text-white
-                      transition text-sm font-medium text-center"
-                    >
-                      View Details
-                    </Link> */}
-
-                    <ViewDetailsButton
-                          slug={property.slug}
-                         href={`https://www.dealacres.com/property/${property.slug}`}
-                         />
-
-                  </div>
-
-                </div>
-
-              </div>
-
+              <span className="font-semibold text-[#9E1C60]">
+                {property.status || "Available"}
+              </span>
             </div>
 
-          ))}
+            <div className="h-8 w-px bg-[#9E1C60]/20"></div>
+
+            <div className="flex flex-col items-center flex-1">
+              <span className="text-gray-500 text-xs">TYPE</span>
+
+              <span className="font-semibold text-gray-900">
+                {property.propertyCategory || "Apartment"}
+              </span>
+            </div>
+
+          </div>
+
+          <div className="flex-1"></div>
+
+          {/* BUTTONS */}
+
+          <div className="flex gap-3 mt-6">
+
+            <button
+              onClick={() => {
+                setSelectedProperty(property.title);
+                setOpen(true);
+              }}
+              className="
+                flex-1 
+                bg-gradient-to-r from-[#9E1C60] to-[#ff4da6]
+                text-white px-4 py-2.5
+                rounded-xl
+                transition
+                text-sm font-medium
+                shadow-md hover:shadow-lg cursor-pointer
+              "
+            >
+              Get Price
+            </button>
+
+            <ViewDetailsButton
+              slug={property.slug}
+              href={`https://www.dealacres.com/property/${property.slug}`}
+            />
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    {/* ================= EVERY 10 CARDS ================= */}
+
+    {(index + 1) % 10 === 0 && (
+      <NearbyLocations
+        properties={currentProperties.slice(index - 9, index + 1)}
+      />
+    )}
+
+  </div>
+))}
 
 
           {/* PAGINATION */}

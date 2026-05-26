@@ -9,11 +9,7 @@ const SidebarEnquiryForm = () => {
     phone: "",
     message: "",
   });
-  const [popup, setPopup] = useState({
-  open: false,
-  type: "success",
-  message: "",
-});
+;
 
   const [loading, setLoading] = useState(false);
 

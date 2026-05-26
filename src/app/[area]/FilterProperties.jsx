@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ContactPopup from "@/components/ContactPopup";
 import ViewDetailsButton from "@/components/ViewDetailsButton";
-
+import NearbyLocations from "@/components/NearbyLocations";
 export default function FilterProperties({ area }) {
 
   // ✅ ONLY LOCALITY DATA USE
@@ -93,136 +93,178 @@ export default function FilterProperties({ area }) {
 
         <div className="grid grid-cols-1 gap-6">
 
-          {safeData.map((property) => (
+          {/* ================= PROPERTY LOOP ================= */}
 
-            <div
-              key={property._id}
-              className="bg-white rounded-3xl border border-gray-100
-              shadow-[0_10px_30px_rgba(0,0,0,0.08)]
-              hover:shadow-[0_25px_70px_rgba(158,28,96,0.25)]
-              hover:-translate-y-2
-              transition duration-300 overflow-hidden flex flex-col md:flex-row"
-            >
+{safeData.map((property, index) => (
+  <div key={property._id}>
 
-              {/* IMAGE */}
+    {/* ================= PROPERTY CARD ================= */}
 
-              <div className="relative md:w-2/5 aspect-[4/3] md:aspect-auto group">
+    <div
+      className="
+        bg-white rounded-3xl border border-gray-100
+        shadow-[0_10px_30px_rgba(0,0,0,0.08)]
+        hover:shadow-[0_25px_70px_rgba(158,28,96,0.25)]
+        hover:-translate-y-2
+        transition duration-300 overflow-hidden
+        flex flex-col md:flex-row
+      "
+    >
 
-                {property?.media?.url ? (
-                  <Image
-                    src={property.media.url}
-                    unoptimized
-                    alt={property.title}
-                    fill
-                    className="object-cover transition duration-500 group-hover:scale-110"
-                  />
-                ) : (
-                  <div className="bg-[#fff1f6] w-full h-full flex items-center justify-center text-[#9E1C60] text-sm">
-                    No Image
-                  </div>
-                )}
+      {/* IMAGE */}
 
-                {/* BADGE */}
+      <div className="relative md:w-2/5 aspect-[4/3] md:aspect-auto group">
 
-                <span
-                  onClick={() => {
-                    setSelectedProperty(property.title);
-                    setOpen(true);
-                  }}
-                  className="absolute top-3 left-3
-                  bg-gradient-to-r from-[#9E1C60] to-[#ff4da6]
-                  text-white text-xs px-3 py-1.5
-                  rounded-full shadow-lg
-                  font-medium cursor-pointer"
-                >
-                  {property.propertyType || "Apartment"}
-                </span>
+        {property?.media?.url ? (
+          <Image
+            src={property.media.url}
+            unoptimized
+            alt={property.title}
+            fill
+            className="
+              object-cover
+              transition duration-500
+              group-hover:scale-110
+            "
+          />
+        ) : (
+          <div
+            className="
+              bg-[#fff1f6]
+              w-full h-full
+              flex items-center justify-center
+              text-[#9E1C60]
+              text-sm
+            "
+          >
+            No Image
+          </div>
+        )}
 
-              </div>
+        {/* BADGE */}
 
-              {/* CONTENT */}
+        <span
+          onClick={() => {
+            setSelectedProperty(property.title);
+            setOpen(true);
+          }}
+          className="
+            absolute top-3 left-3
+            bg-gradient-to-r from-[#9E1C60] to-[#ff4da6]
+            text-white text-xs px-3 py-1.5
+            rounded-full shadow-lg
+            font-medium cursor-pointer
+          "
+        >
+          {property.propertyType || "Apartment"}
+        </span>
 
-              <div className="p-6 flex-1 flex flex-col">
+      </div>
 
-                <h2 className="text-lg font-semibold text-gray-900">
-                  {property.title}
-                </h2>
+      {/* CONTENT */}
 
-                <p className="text-sm text-gray-500 mt-1">
-                  {property.locality}
-                </p>
+      <div className="p-6 flex-1 flex flex-col">
 
-                {/* INFO BAR */}
+        <h2 className="text-lg font-semibold text-gray-900">
+          {property.title}
+        </h2>
 
-                <div className="mt-4 bg-[#fff1f6] border border-[#9E1C60]/20 rounded-xl px-4 py-3 text-xs flex items-center justify-between">
+        <p className="text-sm text-gray-500 mt-1">
+          {property.locality}
+        </p>
 
-                  <div className="flex flex-col items-center flex-1">
-                    <span className="text-gray-400">STATUS</span>
-                    <span className="font-semibold text-[#9E1C60]">
-                      {property.status || "Available"}
-                    </span>
-                  </div>
+        {/* INFO BAR */}
 
-                  <div className="h-8 w-px bg-[#9E1C60]/20"></div>
+        <div
+          className="
+            mt-4
+            bg-[#fff1f6]
+            border border-[#9E1C60]/20
+            rounded-xl
+            px-4 py-3
+            text-xs
+            flex items-center justify-between
+          "
+        >
 
-                  <div className="flex flex-col items-center flex-1">
-                    <span className="text-gray-400">TYPE</span>
-                    <span className="font-semibold text-gray-900">
-                      {property.propertyCategory || "Apartment"}
-                    </span>
-                  </div>
+          <div className="flex flex-col items-center flex-1">
 
-                </div>
+            <span className="text-gray-400">
+              STATUS
+            </span>
 
-                {/* <p className="text-sm text-gray-500 mt-3 line-clamp-2">
-                  {property.description ||
-                    "Affordable apartment with modern design and prime location."}
-                </p> */}
+            <span className="font-semibold text-[#9E1C60]">
+              {property.status || "Available"}
+            </span>
 
-                <div className="flex-1"></div>
+          </div>
 
-                {/* BUTTONS */}
+          <div className="h-8 w-px bg-[#9E1C60]/20"></div>
 
-                <div className="mt-5 flex gap-4">
+          <div className="flex flex-col items-center flex-1">
 
-                  <button
-                    onClick={() => {
-                      setSelectedProperty(property.title);
-                      setOpen(true);
-                    }}
-                    className="bg-gradient-to-r from-[#9E1C60] to-[#ff4da6]
-                    text-white px-5 py-2.5
-                    rounded-xl text-sm font-medium
-                    hover:opacity-90
-                    transition shadow-md cursor-pointer"
-                  >
-                    Price On Call
-                  </button>
+            <span className="text-gray-400">
+              TYPE
+            </span>
 
-                  {/* <Link
-                    href={`/properties/${property.slug}`}
-                    className="border border-[#9E1C60]
-                    text-[#9E1C60]
-                    px-5 py-2.5 text-sm
-                    rounded-xl
-                    hover:bg-[#9E1C60]
-                    hover:text-white transition"
-                  >
-                    View Details
-                  </Link> */}
+            <span className="font-semibold text-gray-900">
+              {property.propertyCategory || "Apartment"}
+            </span>
 
-                  <ViewDetailsButton
-                          slug={property.slug}
-                         href={`https://www.dealacres.com/property/${property.slug}`}
-                         />
+          </div>
 
-                </div>
+        </div>
 
-              </div>
+        <div className="flex-1"></div>
 
-            </div>
+        {/* BUTTONS */}
 
-          ))}
+        <div className="mt-5 flex gap-4">
+
+          <button
+            onClick={() => {
+              setSelectedProperty(property.title);
+              setOpen(true);
+            }}
+            className="
+              bg-gradient-to-r
+              from-[#9E1C60]
+              to-[#ff4da6]
+              text-white
+              px-5 py-2.5
+              rounded-xl
+              text-sm
+              font-medium
+              hover:opacity-90
+              transition
+              shadow-md
+              cursor-pointer
+            "
+          >
+            Price On Call
+          </button>
+
+          <ViewDetailsButton
+            slug={property.slug}
+            href={`https://www.dealacres.com/property/${property.slug}`}
+          />
+
+        </div>
+
+      </div>
+
+    </div>
+
+    {/* ================= EVERY 10 CARDS ================= */}
+
+    {(index + 1) % 10 === 0 && (
+      <NearbyLocations
+        properties={safeData.slice(index - 9, index + 1)}
+      />
+    )}
+
+  </div>
+))}
 
         </div>
 

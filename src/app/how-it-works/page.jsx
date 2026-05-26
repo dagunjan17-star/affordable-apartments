@@ -13,6 +13,9 @@ export const metadata = {
     "flats for sale",
     "apartments for rent",
   ],
+    alternates: {
+    canonical: "https://www.affordableapartmentsingurgaon.com/how-it-works",
+  },
 };
 
 export default function Page() {

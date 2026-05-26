@@ -1,9 +1,12 @@
 import Link from "next/link";
+import Breadcrumb from "@/components/Breadcrumb"
 export default function AffordableApartmentsBlog() {
   return (
     <section className="bg-gradient-to-b from-white via-[#fdf2f8] to-[#fff1f6] py-16 px-4 md:px-10">
       <div className="max-w-6xl mx-auto space-y-10">
-
+      <div className="py-5">
+            <Breadcrumb/>
+           </div>
         {/* Main Title */}
         <h1 className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-[#ff4da6] to-[#9E1C60] bg-clip-text text-transparent leading-tight">
           Affordable Apartments in Gurgaon – Complete Guide for Smart Home Buyers

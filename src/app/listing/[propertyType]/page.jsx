@@ -12,6 +12,9 @@ export const metadata = {
     "affordable housing Gurgaon",
     "buy budget house Gurgaon",
   ],
+    alternates: {
+    canonical: "https://www.affordableapartmentsingurgaon.com/listing",
+  },
 };
 
 export default function Page() {

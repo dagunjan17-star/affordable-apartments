@@ -18,12 +18,6 @@ const HeroSection = () => {
 
   const [loading, setLoading] = useState(false);
 
-  // ALERT POPUP STATE
-  const [popup, setPopup] = useState({
-    open: false,
-    type: "success",
-    message: "",
-  });
 
   const website =
     typeof window !== "undefined"
@@ -123,7 +117,7 @@ const HeroSection = () => {
           {/* LEFT CONTENT */}
           <div className="md:col-span-7 lg:col-span-8 text-white">
 
-            <h1 className="text-2xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight">
+            <h1 className="text-2xl md:text-4xl font-bold mb-6 leading-tight tracking-tight">
               Affordable{" "}
               <span className="bg-gradient-to-r from-[#ff4da6] to-[#9E1C60] bg-clip-text text-transparent">
                 Apartments
@@ -131,7 +125,7 @@ const HeroSection = () => {
               in Gurgaon
             </h1>
 
-            <p className="text-lg max-w-2xl text-gray-200 leading-relaxed">
+            <p className="text-lg max-w-4xl text-gray-200 leading-relaxed">
               Affordable living in Gurgaon is no longer a contradiction — it's a reality! Discover our handpicked collection of affordable apartments in Gurgaon that deliver genuine value without compromising on quality, connectivity, or comfort. The city's expanding real estate landscape has given rise to excellent budget-friendly apartment options in emerging sectors along Dwarka Expressway, New Gurgaon, Sohna Road, and the Southern Peripheral Road — offering modern amenities, thoughtful design, and RERA-compliant developer trust at prices that won't stretch your finances. Affordable apartments in Gurgaon are ideal for first-time homebuyers stepping onto the property ladder, young professionals seeking independent living near their corporate offices, and nuclear families wanting a quality home within a disciplined budget. Many of these projects come with government incentives, affordable housing scheme benefits, and home loan subsidies under PMAY (Pradhan Mantri Awas Yojana), making ownership even more accessible. Don't let soaring prices in DLF or Golf Course Road discourage you — Gurgaon's budget apartment market is thriving, vibrant, and full of options worth every rupee. Let us help you find your affordable dream apartment in Gurgaon today!
             </p>
 
