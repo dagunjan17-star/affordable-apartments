@@ -74,7 +74,7 @@ export async function generateSitemap() {
 
     return `
       <url>
-        <loc>${baseUrl}/affordable-house-in-${slug}-gurgaon</loc>
+        <loc>${baseUrl}/affordable-apartments-in-${slug}-gurgaon</loc>
      <lastmod>${currentDate}</lastmod>
       </url>
     `;
