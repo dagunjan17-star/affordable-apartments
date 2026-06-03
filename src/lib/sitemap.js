@@ -88,7 +88,7 @@ export async function generateSitemap() {
       .replace("https://", "");
 
     const res = await axios.get(
-      `https://deal-acres-backend.onrender.com/newBlog/getSlugsByDomain/${apiDomain}`
+      `https://gurgaon-backend.onrender.com/blogs/getSlugsByDomain/${apiDomain}`
     );
 
     if (

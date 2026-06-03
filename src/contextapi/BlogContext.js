@@ -7,7 +7,7 @@ import axios from "axios";
 const BlogContext = createContext();
 
 const DOMAIN = "www.affordableapartmentsingurgaon.com";
-const BASE_URL = "https://deal-acres-backend.onrender.com";
+const BASE_URL = "https://gurgaon-backend.onrender.com";
 
 export const BlogProvider = ({ children }) => {
   const [blogs, setBlogs] = useState([]);
@@ -24,7 +24,7 @@ export const BlogProvider = ({ children }) => {
 
   try {
     const res = await axios.get(
-      `${BASE_URL}/admin/blog/fetchBlogs?domain=${DOMAIN}&page=${pageNum}&limit=${limit}`
+      `${BASE_URL}/blog/fetchBlogs?domain=${DOMAIN}&page=${pageNum}&limit=${limit}`
     );
 
    
