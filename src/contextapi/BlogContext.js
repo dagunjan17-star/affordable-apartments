@@ -24,7 +24,7 @@ export const BlogProvider = ({ children }) => {
 
   try {
     const res = await axios.get(
-      `${BASE_URL}/blog/fetchBlogs?domain=${DOMAIN}&page=${pageNum}&limit=${limit}`
+      `${BASE_URL}/blogs/fetchBlogs?domain=${DOMAIN}&page=${pageNum}&limit=${limit}`
     );
 
    
