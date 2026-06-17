@@ -21,19 +21,19 @@ jobs:
           git config --global user.name "github-actions"
 
       # Main Repo
-      - name: Sync to Affordable Apartments Repo
-        continue-on-error: true
-        run: |
-          git remote remove mirror || true
-          git remote add mirror https://x-access-token:${{ secrets.GURGAON_ACCESS_TOKEN }}@github.com/dealacresGurgaon/Affordable-Apartments.git
-          git push mirror HEAD:main --force
+      # - name: Sync to Affordable Apartments Repo
+      #   continue-on-error: true
+      #   run: |
+      #     git remote remove mirror || true
+      #     git remote add mirror https://x-access-token:${{ secrets.GURGAON_ACCESS_TOKEN }}@github.com/dealacresGurgaon/Affordable-Apartments.git
+      #     git push mirror HEAD:main --force
 
       # Frontend Repo
       - name: Sync to Gurgaon Frontend Repo
         continue-on-error: true
         run: |
           git remote remove frontend || true
-          git remote add frontend https://x-access-token:${{ secrets.GURGAON_PROJECTS_ACCESS_TOKEN }}@github.com/mukeshkumar44/affordable-apartment-in-gurgaon-frontend.git
+          git remote add frontend https://x-access-token:${{ secrets.MUKESH_PROJECTS_ACCESS_TOKEN }}@github.com/mukeshkumar44/affordable-apartment-in-gurgaon-frontend.git
           git push frontend HEAD:main --force
 
       # Nagori Gate Repo
