@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumb"
+import DisclaimerSection from "./DisclaimerSection";
 export default function AboutPage() {
   return (
     <section className="bg-gradient-to-b from-white via-[#fff1f6] to-[#fdf2f8] px-4 py-20">
@@ -216,6 +217,7 @@ export default function AboutPage() {
         </div>
 
       </div>
+      <DisclaimerSection/>
     </section>
   );
 }
