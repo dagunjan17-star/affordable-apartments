@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 import { locations } from "../data/locations"
-
+import { useLocality } from "@/contextapi/LocalityContext";
 const createSlug = (location) => {
   return location
     .replace(", Gurgaon", "")
@@ -18,11 +18,18 @@ export default function Footer() {
 
   const [showAll, setShowAll] = useState(false);
 
-  const initialCount = 40;
+ const { localities } = useLocality();
 
-  const visibleLocations = showAll
-    ? locations
-    : locations.slice(0, initialCount);
+const displayLocations =
+  localities && localities.length > 0
+    ? localities
+    : locations;
+
+const initialCount = 19;
+
+const visibleLocations = showAll
+  ? displayLocations
+  : displayLocations.slice(0, initialCount);
 
   return (
     <footer className="bg-gradient-to-b from-white via-[#fff1f6] to-[#fdf2f8] pt-16 pb-8 px-4 border-t border-[#9E1C60]/20">
@@ -37,7 +44,7 @@ export default function Footer() {
             Affordable Apartments Near Gurgaon
           </h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-4 text-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-x-6 gap-y-4 text-sm">
 
             {visibleLocations.map((loc, index) => (
 
@@ -77,7 +84,7 @@ key={index}
 
             {/* VIEW MORE / LESS */}
 
-            {!showAll && locations.length > initialCount && (
+           {!showAll && displayLocations.length > initialCount && (
               <div>
                 <span
                   onClick={() => setShowAll(true)}
