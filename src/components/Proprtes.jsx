@@ -264,10 +264,8 @@ export default function Properties() {
     {/* ================= EVERY 10 CARDS ================= */}
 
     {(index + 1) % 10 === 0 && (
-      <NearbyLocations
-        properties={currentProperties.slice(index - 9, index + 1)}
-      />
-    )}
+  <NearbyLocations blockIndex={Math.floor(index / 10)} />
+)}
 
   </div>
 ))}
