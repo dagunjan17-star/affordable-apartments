@@ -17,14 +17,14 @@ export const metadata = {
   ],
 
   alternates: {
-    canonical: "https://yourdomain.com/blog", // 👉 apna domain daal dena
+    canonical: "https://www.affordableapartmentsingurgaon.com/blog", // 👉 apna domain daal dena
   },
 
   openGraph: {
     title: "Gurgaon Apartment Blogs & Real Estate Insights",
     description:
       "Read expert insights, buying guides and investment tips for apartments in Gurgaon.",
-    url: "https://yourdomain.com/blog",
+    url: "https://www.affordableapartmentsingurgaon.com/blog",
     siteName: "yourdomain.com",
     type: "website",
   },

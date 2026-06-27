@@ -2,16 +2,19 @@ import AboutPage from "./AboutSection";
 
 
 export const metadata = {
-  title: "About Us – Trusted Platform for 2BHK Flats for Sale in Gurgaon",
+  title: "About Affordable Apartments in Gurgaon | Trusted Real Estate Platform",
   description:
-    "We are Gurgaon's trusted platform for 2BHK flats for sale. Browse 1000+ verified 2BHK apartments in Gurgaon – ready to move & new launch projects. Affordable 2BHK flats across Sohna Road, Dwarka Expressway & Golf Course Road. 3000+ happy buyers served!",
+    "Learn about Affordable Apartments in Gurgaon, a trusted real estate platform helping homebuyers find verified affordable apartments, 2BHK & 3BHK flats, ready-to-move homes, and new launch projects across Gurgaon.",
   keywords: [
-    "2BHK flats in Gurgaon",
-    "apartments in Gurgaon",
-    "buy 2BHK Gurgaon",
-    "property in Gurgaon",
+    "Affordable Apartments in Gurgaon",
+    "about affordable apartments in Gurgaon",
+    "Gurgaon real estate",
+    "2BHK apartments Gurgaon",
+    "3BHK apartments Gurgaon",
+    "affordable flats Gurgaon",
+    "property consultants Gurgaon",
   ],
-    alternates: {
+  alternates: {
     canonical: "https://www.affordableapartmentsingurgaon.com/about",
   },
 };

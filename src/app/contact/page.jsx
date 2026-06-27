@@ -1,16 +1,19 @@
 
 import ContactPage from "./ContactSection";
 export const metadata = {
-  title: "Contact Us – Enquire About 2BHK Flats for Sale in Gurgaon",
+  title: "Contact Affordable Apartments in Gurgaon | Get Expert Property Assistance",
   description:
-    "Looking to buy 2BHK flats for sale in Gurgaon? Contact our property experts today for verified 2BHK apartments in Gurgaon – ready to move, new launch & affordable options. Get trusted Gurgaon real estate advice. Enquire now, we'll get back to you shortly!",
+    "Get in touch with Affordable Apartments in Gurgaon for expert guidance on affordable apartments, verified 2BHK & 3BHK flats, ready-to-move homes, and new launch projects across Gurgaon. Contact our property experts today.",
   keywords: [
-    "2BHK flats in Gurgaon",
-    "apartments in Gurgaon",
-    "buy 2BHK Gurgaon",
-    "property in Gurgaon",
+    "Contact Affordable Apartments in Gurgaon",
+    "Gurgaon property consultants",
+    "Affordable apartments Gurgaon",
+    "2BHK flats Gurgaon",
+    "3BHK flats Gurgaon",
+    "real estate Gurgaon",
+    "property enquiry Gurgaon",
   ],
-    alternates: {
+  alternates: {
     canonical: "https://www.affordableapartmentsingurgaon.com/contact",
   },
 };
