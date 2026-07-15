@@ -151,7 +151,7 @@ if (
               key={item._id}
               onClick={() =>
                 window.open(
-                  `https://www.dealacres.com/properties/affordable-apartments-in-${item.slug}`,
+                  `https://www.dealacres.com/properties/affordable-apartments-in-gurgaon`,
                   "_blank"
                 )
               }
